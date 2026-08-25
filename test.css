@@ -3,6 +3,10 @@
   padding: 0; 
   box-sizing: border-box; 
 } 
+a:focus-visible {
+  outline: 2px solid black;
+  outline-offset: 4px;
+}
 @media (max-width: 800px) { 
   /* 태블릿 / 작은 화면 */ 
 } 
