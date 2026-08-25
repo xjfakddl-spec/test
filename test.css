@@ -57,6 +57,10 @@
     transform: translateY(10px); 
   } 
 } 
+
+section {
+  scroll-margin-top: 150px;
+}
 #logo { 
   max-width: 100px; 
   min-width: 50px; 
