@@ -1,6 +1,6 @@
 # It's me
 
-## 주요기
+## 주요 기능
 
 - 반응형 웹 디자인
 - PC / 태블릿 / 모바일 화면 대응
@@ -24,4 +24,4 @@
 
 ## 배포
 
-GitHub Pages: https://github.com/xjfakddl-spec/test
+GitHub Pages: https://xjfakddl-spec.github.io/test/
