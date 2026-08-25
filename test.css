@@ -57,6 +57,9 @@
     transform: translateY(10px); 
   } 
 } 
+section {
+  scroll-margin-top: 150px;
+}
 #logo { 
   max-width: 100px; 
   min-width: 50px; 
@@ -76,12 +79,19 @@ header {
   text-align: center; 
   z-index: 1000; 
 } 
+.first-view {
+  min-height: 100dvh;
+
+  display: flex;
+  flex-direction: column;
+}
+
 #hero { 
   display: flex; 
   position: relative; 
   flex-direction: column; 
-  min-height: calc(100vh - 145px); 
   padding: 20px; 
+    flex: 1;
   background-color: var(--main-background-color); 
   gap: 20px; 
   font-size: 2rem; 
