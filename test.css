@@ -7,42 +7,7 @@ a:focus-visible {
   outline: 2px solid black;
   outline-offset: 4px;
 }
-@media (max-width: 800px) { 
-  /* 태블릿 / 작은 화면 */ 
-} 
- 
-@media (max-width: 500px) { 
-  /* 모바일 */ 
-  html { 
-    font-size: 12px; 
-  } 
- 
-  header { 
-    flex-direction: column; 
-    gap: 10px; 
-  } 
- 
-  nav { 
-    display: flex; 
-    gap: 10px; 
-    flex-wrap: wrap; 
-    justify-content: center; 
-  } 
-  #projects-cards { 
-    grid-template-columns: 1fr; 
-  } 
- 
-  #projects-cards .card:first-child { 
-    grid-column: auto; 
-  } 
-} 
-:root { 
-  --main-background-color: #e9ecef; 
-  --sub-background-color: #f8f9fa; 
-  --text-color: #343a40; 
-} 
-@media screen { 
-} 
+
 @keyframes appear { 
   from { 
     opacity: 0; 
@@ -165,4 +130,41 @@ header {
  
 #projects-cards .card:first-child { 
   grid-column: 1 / -1; 
+} 
+
+@media (max-width: 800px) { 
+  /* 태블릿 / 작은 화면 */ 
+} 
+ 
+@media (max-width: 500px) { 
+  /* 모바일 */ 
+  html { 
+    font-size: 12px; 
+  } 
+ 
+  header { 
+    flex-direction: column; 
+    gap: 10px; 
+  } 
+ 
+  nav { 
+    display: flex; 
+    gap: 10px; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+  } 
+  #projects-cards { 
+    grid-template-columns: 1fr; 
+  } 
+ 
+  #projects-cards .card:first-child { 
+    grid-column: auto; 
+  } 
+} 
+:root { 
+  --main-background-color: #e9ecef; 
+  --sub-background-color: #f8f9fa; 
+  --text-color: #343a40; 
+} 
+@media screen { 
 } 
