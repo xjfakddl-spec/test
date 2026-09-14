@@ -1,8 +1,8 @@
 const reservations = [
-  { name: "Kim", room: "Single", price: 12000, status: "confirmed" },
-  { name: "Tanaka", room: "Double", price: 15000, status: "confirmed" },
-  { name: "Lee", room: "Single", price: 10000, status: "cancelled" },
-  { name: "Park", room: "Suite", price: 22000, status: "confirmed" }
+  { id: 1, name: "Kim", room: "Single", price: 12000, status: "confirmed" },
+  { id: 2, name: "Tanaka", room: "Double", price: 15000, status: "confirmed" },
+  { id: 3, name: "Lee", room: "Single", price: 10000, status: "cancelled" },
+  { id: 4, name: "Park", room: "Suite", price: 22000, status: "confirmed" }
 ];
 
 const search = document.querySelector("#search-input");
@@ -23,9 +23,14 @@ let sortOrder = "none";
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const name = nameInput.value;
-  const room = roomInput.value;
+  const name = nameInput.value.trim();
+  const room = roomInput.value.trim();
   const price = Number(priceInput.value);
+  
+  if (name === "" || room === "" || price === 0) {
+  alert("모든 값을 입력해주세요.");
+  return;
+}
 
   const newReservation = {
     name,
@@ -37,6 +42,10 @@ form.addEventListener("submit", (event) => {
   reservations.push(newReservation);
 
   renderReservations();
+  
+  nameInput.value = "";
+  roomInput.value = "";
+  priceInput.value = "";
 });
 
 const renderReservations = () => {
@@ -58,7 +67,13 @@ const renderReservations = () => {
     list.innerHTML = "결과 없음";
   } else {
     const html = result
-      .map((re) => `<p>${re.name} / ${re.room} / ${re.price}</p>`)
+      .map(
+  (re) => `
+    <p>
+      ${re.name} / ${re.room} / ${re.price}
+      <button class="delete-btn" data-id="${re.id}">삭제</button>
+    </p>
+  `
       .join("");
 
     list.innerHTML = html;
