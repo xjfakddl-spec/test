@@ -10,8 +10,11 @@ const allButton = document.querySelector("#all-btn");
 const confirmedButton = document.querySelector("#confirmed-btn");
 const cancelledButton = document.querySelector("#cancelled-btn");
 const list = document.querySelector("#reservation-list");
+const ascButton = document.querySelector("#price-asc");
+const descButton = document.querySelector("#price-desc");
 
 let choice = "all";
+let sortOrder = "none";
 
 const renderReservations = () => {
   const searchText = search.value.toLowerCase();
@@ -54,8 +57,19 @@ cancelledButton.addEventListener("click", () => {
   renderReservations();
 });
 
+ascButton.addEventListener("click", () => {
+  sortOrder = "asc";
+  renderReservations();
+});
+
+descButton.addEventListener("click", () => {
+  sortOrder = "desc";
+  renderReservations();
+});
+
 search.addEventListener("input", () => {
   renderReservations();
 });
+
 
 renderReservations();
