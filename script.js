@@ -12,9 +12,32 @@ const cancelledButton = document.querySelector("#cancelled-btn");
 const list = document.querySelector("#reservation-list");
 const ascButton = document.querySelector("#price-asc");
 const descButton = document.querySelector("#price-desc");
+const form = document.querySelector("#reservation-form");
+const nameInput = document.querySelector("#name-input");
+const roomInput = document.querySelector("#room-input");
+const priceInput = document.querySelector("#price-input");
 
 let choice = "all";
 let sortOrder = "none";
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const name = nameInput.value;
+  const room = roomInput.value;
+  const price = Number(priceInput.value);
+
+  const newReservation = {
+    name,
+    room,
+    price,
+    status: "confirmed"
+  };
+
+  reservations.push(newReservation);
+
+  renderReservations();
+});
 
 const renderReservations = () => {
   const searchText = search.value.toLowerCase();
