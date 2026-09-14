@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>예약 관리</title>
+  </head>
+
+  <body>
+    <h1>예약 관리</h1>
+
+    <input
+      id="search-input"
+      type="text"
+      placeholder="예약자 이름 검색"
+    />
+
+    <div>
+      <button id="all-btn">전체</button>
+      <button id="confirmed-btn">확정</button>
+      <button id="cancelled-btn">취소</button>
+    </div>
+
+    <div>
+      <button id="price-asc">가격 낮은순</button>
+      <button id="price-desc">가격 높은순</button>
+    </div>
+
+    <div id="reservation-list"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
