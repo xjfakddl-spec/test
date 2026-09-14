@@ -73,7 +73,7 @@ const renderReservations = () => {
       ${re.name} / ${re.room} / ${re.price}
       <button class="delete-btn" data-id="${re.id}">삭제</button>
     </p>
-  `
+  `)
       .join("");
 
     list.innerHTML = html;
