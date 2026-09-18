@@ -26,8 +26,8 @@ list.addEventListener("click", (event) => {
 
     const index = reservations.findIndex((re) => re.id === id);
 
-    console.log(id);
-    console.log(index);
+reservations.splice(index, 1);
+renderReservations();
   }
 });
 
