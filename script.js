@@ -35,7 +35,7 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const ids = reservations.map((re) => re.id);
-  const maxId = Math.max(...ids);
+  const maxId = ids.length === 0 ? 0 : Math.max(...ids);
   const newId = maxId + 1;
 
   const name = nameInput.value.trim();
