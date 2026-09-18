@@ -1,10 +1,13 @@
 // 1. 데이터
-const reservations = [
-  { id: 1, name: "Kim", room: "Single", price: 12000, status: "confirmed" },
-  { id: 2, name: "Tanaka", room: "Double", price: 15000, status: "confirmed" },
-  { id: 3, name: "Lee", room: "Single", price: 10000, status: "cancelled" },
-  { id: 4, name: "Park", room: "Suite", price: 22000, status: "confirmed" }
-];
+const savedReservations = localStorage.getItem("reservations");
+const reservations = savedReservations
+  ? JSON.parse(savedReservations)
+  : [
+      { id: 1, name: "Kim", room: "Single", price: 12000, status: "confirmed" },
+      { id: 2, name: "Tanaka", room: "Double", price: 15000, status: "confirmed" },
+      { id: 3, name: "Lee", room: "Single", price: 10000, status: "cancelled" },
+      { id: 4, name: "Park", room: "Suite", price: 22000, status: "confirmed" }
+    ];
 
 // 2. DOM 가져오기
 
@@ -63,6 +66,13 @@ const renderReservations = () => {
   }
 };
 
+const saveReservations = () => {
+  localStorage.setItem(
+    "reservations",
+    JSON.stringify(reservations)
+  );
+};
+
 // 5. 이벤트
 
 list.addEventListener("click", (event) => {
@@ -73,6 +83,7 @@ list.addEventListener("click", (event) => {
     const ok = confirm("정말 삭제하시겠습니까?");
     if (ok) {
   reservations.splice(index, 1);
+      saveReservations();
 renderReservations();
 }}
   if (event.target.classList.contains("edit-btn")) {
@@ -124,6 +135,7 @@ form.addEventListener("submit", (event) => {
   reservations.push(newReservation);
   }
 
+  saveReservations();
   renderReservations();
   cancelEditButton.hidden = true;
   form.reset();
