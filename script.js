@@ -133,6 +133,7 @@ cancelEditButton.addEventListener("click", () => {
   editingId = null;
   form.reset();
   submitButton.textContent = "예약 추가";
+  cancelEditButton.hidden = true;
 });
 
 
