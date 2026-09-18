@@ -22,7 +22,9 @@ let sortOrder = "none";
 
 list.addEventListener("click", (event) => {
   if (event.target.classList.contains("delete-btn")) {
-    console.log("삭제 버튼 클릭");
+    const id = Number(event.target.dataset.id);
+
+    console.log(id);
   }
 });
 
