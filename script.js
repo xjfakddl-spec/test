@@ -1,9 +1,12 @@
+// 1. 데이터
 const reservations = [
   { id: 1, name: "Kim", room: "Single", price: 12000, status: "confirmed" },
   { id: 2, name: "Tanaka", room: "Double", price: 15000, status: "confirmed" },
   { id: 3, name: "Lee", room: "Single", price: 10000, status: "cancelled" },
   { id: 4, name: "Park", room: "Suite", price: 22000, status: "confirmed" }
 ];
+
+// 2. DOM 가져오기
 
 const search = document.querySelector("#search-input");
 const allButton = document.querySelector("#all-btn");
@@ -17,51 +20,13 @@ const nameInput = document.querySelector("#name-input");
 const roomInput = document.querySelector("#room-input");
 const priceInput = document.querySelector("#price-input");
 
+// 3. 상태
+
 let choice = "all";
 let sortOrder = "none";
+let editingId = null;
 
-list.addEventListener("click", (event) => {
-  if (event.target.classList.contains("delete-btn")) {
-    const id = Number(event.target.dataset.id);
-
-    const index = reservations.findIndex((re) => re.id === id);
-    const ok = confirm("정말 삭제하시겠습니까?");
-    if (ok) {
-  reservations.splice(index, 1);
-renderReservations();
-}
-}});
-
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const ids = reservations.map((re) => re.id);
-  const maxId = ids.length === 0 ? 0 : Math.max(...ids);
-  const newId = maxId + 1;
-
-  const name = nameInput.value.trim();
-  const room = roomInput.value.trim();
-  const price = Number(priceInput.value);
-  
-  if (name === "" || room === "" || price === 0) {
-  alert("모든 값을 입력해주세요.");
-  return;
-}
-
-  const newReservation = {
-    id: newId,
-    name,
-    room,
-    price,
-    status: "confirmed"
-  };
-
-  reservations.push(newReservation);
-
-  renderReservations();
-  
-  form.reset();
-});
+// 4. 함수
 
 const renderReservations = () => {
   const searchText = search.value.toLowerCase();
@@ -86,7 +51,8 @@ const renderReservations = () => {
   (re) => `
     <p>
       ${re.name} / ${re.room} / ${re.price}
-      <button class="delete-btn" data-id="${re.id}">삭제</button>
+      <button class="delete-btn" data-id="${re.id}">삭제</button> /
+      <button class="edit-btn" data-id="${re.id}">수정</button>
     </p>
   `)
       .join("");
@@ -94,6 +60,71 @@ const renderReservations = () => {
     list.innerHTML = html;
   }
 };
+
+// 5. 이벤트
+
+list.addEventListener("click", (event) => {
+  if (event.target.classList.contains("delete-btn")) {
+    const id = Number(event.target.dataset.id);
+
+    const index = reservations.findIndex((re) => re.id === id);
+    const ok = confirm("정말 삭제하시겠습니까?");
+    if (ok) {
+  reservations.splice(index, 1);
+renderReservations();
+}}
+  if (event.target.classList.contains("edit-btn")) {
+    const id = Number(event.target.dataset.id);
+
+    const reservation = reservations.find((re) => re.id === id);
+
+    editingId = id;
+
+    nameInput.value = reservation.name;
+    roomInput.value = reservation.room;
+    priceInput.value = reservation.price;
+}});
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const name = nameInput.value.trim();
+  const room = roomInput.value.trim();
+  const price = Number(priceInput.value);
+  
+  if (name === "" || room === "" || price === 0) {
+  alert("모든 값을 입력해주세요.");
+  return;
+}
+  if (editingId !== null) {
+  const reservation = reservations.find((re) => re.id === editingId);
+
+  reservation.name = name;
+  reservation.room = room;
+  reservation.price = price;
+
+    editingId = null;
+} else {
+  const ids = reservations.map((re) => re.id);
+  const maxId = ids.length === 0 ? 0 : Math.max(...ids);
+  const newId = maxId + 1;
+  
+  const newReservation = {
+    id: newId,
+    name,
+    room,
+    price,
+    status: "confirmed"
+}
+  reservations.push(newReservation);
+  }
+
+  renderReservations();
+  
+  form.reset();
+});
+
+
 
 allButton.addEventListener("click", () => {
   choice = "all";
@@ -124,5 +155,6 @@ search.addEventListener("input", () => {
   renderReservations();
 });
 
+// 6. 최초 실행
 
 renderReservations();
