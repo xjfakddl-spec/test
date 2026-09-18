@@ -25,7 +25,7 @@ list.addEventListener("click", (event) => {
     const id = Number(event.target.dataset.id);
 
     const index = reservations.findIndex((re) => re.id === id);
-
+const ok = confirm("정말 삭제하시겠습니까?");
 reservations.splice(index, 1);
 renderReservations();
   }
@@ -59,9 +59,7 @@ form.addEventListener("submit", (event) => {
 
   renderReservations();
   
-  nameInput.value = "";
-  roomInput.value = "";
-  priceInput.value = "";
+  form.reset();
 });
 
 const renderReservations = () => {
