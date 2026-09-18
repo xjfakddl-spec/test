@@ -25,11 +25,12 @@ list.addEventListener("click", (event) => {
     const id = Number(event.target.dataset.id);
 
     const index = reservations.findIndex((re) => re.id === id);
-const ok = confirm("정말 삭제하시겠습니까?");
-reservations.splice(index, 1);
+    const ok = confirm("정말 삭제하시겠습니까?");
+    if (ok) {
+  reservations.splice(index, 1);
 renderReservations();
-  }
-});
+}
+}});
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
