@@ -19,6 +19,7 @@ const form = document.querySelector("#reservation-form");
 const nameInput = document.querySelector("#name-input");
 const roomInput = document.querySelector("#room-input");
 const priceInput = document.querySelector("#price-input");
+const submitButton = form.querySelector('button[type="submit"]');
 
 // 3. 상태
 
@@ -79,6 +80,7 @@ renderReservations();
     const reservation = reservations.find((re) => re.id === id);
 
     editingId = id;
+    submitButton.textContent = "예약 수정";
 
     nameInput.value = reservation.name;
     roomInput.value = reservation.room;
@@ -104,6 +106,7 @@ form.addEventListener("submit", (event) => {
   reservation.price = price;
 
     editingId = null;
+    submitButton.textContent = "예약 추가";
 } else {
   const ids = reservations.map((re) => re.id);
   const maxId = ids.length === 0 ? 0 : Math.max(...ids);
