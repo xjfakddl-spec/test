@@ -20,6 +20,7 @@ const nameInput = document.querySelector("#name-input");
 const roomInput = document.querySelector("#room-input");
 const priceInput = document.querySelector("#price-input");
 const submitButton = form.querySelector('button[type="submit"]');
+const cancelEditButton = document.querySelector("#cancel-edit-btn");
 
 // 3. 상태
 
@@ -125,6 +126,12 @@ form.addEventListener("submit", (event) => {
   renderReservations();
   
   form.reset();
+});
+
+cancelEditButton.addEventListener("click", () => {
+  editingId = null;
+  form.reset();
+  submitButton.textContent = "예약 추가";
 });
 
 
