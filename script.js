@@ -20,6 +20,9 @@ const priceInput = document.querySelector("#price-input");
 let choice = "all";
 let sortOrder = "none";
 
+const index = reservations.findIndex((re) => re.id === id);
+console.log(index);
+
 list.addEventListener("click", (event) => {
   if (event.target.classList.contains("delete-btn")) {
     const id = Number(event.target.dataset.id);
