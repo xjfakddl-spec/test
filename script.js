@@ -20,6 +20,12 @@ const priceInput = document.querySelector("#price-input");
 let choice = "all";
 let sortOrder = "none";
 
+list.addEventListener("click", (event) => {
+  if (event.target.classList.contains("delete-btn")) {
+    console.log("삭제 버튼 클릭");
+  }
+});
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
