@@ -82,6 +82,7 @@ renderReservations();
 
     editingId = id;
     submitButton.textContent = "예약 수정";
+    cancelEditButton.hidden = false;
 
     nameInput.value = reservation.name;
     roomInput.value = reservation.room;
@@ -124,7 +125,7 @@ form.addEventListener("submit", (event) => {
   }
 
   renderReservations();
-  
+  cancelEditButton.hidden = true;
   form.reset();
 });
 
@@ -168,3 +169,4 @@ search.addEventListener("input", () => {
 // 6. 최초 실행
 
 renderReservations();
+cancelEditButton.hidden = true;
