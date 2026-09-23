@@ -114,8 +114,13 @@ form.addEventListener("submit", (event) => {
   const room = roomInput.value.trim();
   const price = Number(priceInput.value);
 
-  if (name === "" || room === "" || price <= 0 || !Number.isFinite(price)) {
-    errorMessage.textContent = "모든 값을 입력해주세요.";
+  if (name === "" || room === "") {
+    errorMessage.textContent =
+      "예약자 이름과 객실 타입을 올바르게 입력해주세요.";
+    return;
+  }
+  if (price <= 0 || !Number.isFinite(price)) {
+    errorMessage.textContent = "가격을 올바르게 입력해주세요.";
     return;
   }
   if (editingId !== null) {
