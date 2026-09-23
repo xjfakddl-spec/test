@@ -4,9 +4,15 @@ const reservations = savedReservations
   ? JSON.parse(savedReservations)
   : [
       { id: 1, name: "Kim", room: "Single", price: 12000, status: "confirmed" },
-      { id: 2, name: "Tanaka", room: "Double", price: 15000, status: "confirmed" },
+      {
+        id: 2,
+        name: "Tanaka",
+        room: "Double",
+        price: 15000,
+        status: "confirmed",
+      },
       { id: 3, name: "Lee", room: "Single", price: 10000, status: "cancelled" },
-      { id: 4, name: "Park", room: "Suite", price: 22000, status: "confirmed" }
+      { id: 4, name: "Park", room: "Suite", price: 22000, status: "confirmed" },
     ];
 
 // 2. DOM 가져오기
@@ -39,7 +45,7 @@ const renderReservations = () => {
   const result = reservations.filter(
     (re) =>
       (choice === "all" || re.status === choice) &&
-      re.name.toLowerCase().includes(searchText)
+      re.name.toLowerCase().includes(searchText),
   );
 
   if (sortOrder === "asc") {
@@ -53,13 +59,14 @@ const renderReservations = () => {
   } else {
     const html = result
       .map(
-  (re) => `
+        (re) => `
     <p>
       ${re.name} / ${re.room} / ${re.price}
       <button class="delete-btn" data-id="${re.id}">삭제</button> /
       <button class="edit-btn" data-id="${re.id}">수정</button>
     </p>
-  `)
+  `,
+      )
       .join("");
 
     list.innerHTML = html;
@@ -67,10 +74,7 @@ const renderReservations = () => {
 };
 
 const saveReservations = () => {
-  localStorage.setItem(
-    "reservations",
-    JSON.stringify(reservations)
-  );
+  localStorage.setItem("reservations", JSON.stringify(reservations));
 };
 
 // 5. 이벤트
@@ -82,10 +86,11 @@ list.addEventListener("click", (event) => {
     const index = reservations.findIndex((re) => re.id === id);
     const ok = confirm("정말 삭제하시겠습니까?");
     if (ok) {
-  reservations.splice(index, 1);
+      reservations.splice(index, 1);
       saveReservations();
-renderReservations();
-}}
+      renderReservations();
+    }
+  }
   if (event.target.classList.contains("edit-btn")) {
     const id = Number(event.target.dataset.id);
 
@@ -98,7 +103,8 @@ renderReservations();
     nameInput.value = reservation.name;
     roomInput.value = reservation.room;
     priceInput.value = reservation.price;
-}});
+  }
+});
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -106,33 +112,33 @@ form.addEventListener("submit", (event) => {
   const name = nameInput.value.trim();
   const room = roomInput.value.trim();
   const price = Number(priceInput.value);
-  
-  if (name === "" || room === "" || price === 0) {
-  alert("모든 값을 입력해주세요.");
-  return;
-}
-  if (editingId !== null) {
-  const reservation = reservations.find((re) => re.id === editingId);
 
-  reservation.name = name;
-  reservation.room = room;
-  reservation.price = price;
+  if (name === "" || room === "" || price <= 0) {
+    alert("모든 값을 입력해주세요.");
+    return;
+  }
+  if (editingId !== null) {
+    const reservation = reservations.find((re) => re.id === editingId);
+
+    reservation.name = name;
+    reservation.room = room;
+    reservation.price = price;
 
     editingId = null;
     submitButton.textContent = "예약 추가";
-} else {
-  const ids = reservations.map((re) => re.id);
-  const maxId = ids.length === 0 ? 0 : Math.max(...ids);
-  const newId = maxId + 1;
-  
-  const newReservation = {
-    id: newId,
-    name,
-    room,
-    price,
-    status: "confirmed"
-}
-  reservations.push(newReservation);
+  } else {
+    const ids = reservations.map((re) => re.id);
+    const maxId = ids.length === 0 ? 0 : Math.max(...ids);
+    const newId = maxId + 1;
+
+    const newReservation = {
+      id: newId,
+      name,
+      room,
+      price,
+      status: "confirmed",
+    };
+    reservations.push(newReservation);
   }
 
   saveReservations();
@@ -147,8 +153,6 @@ cancelEditButton.addEventListener("click", () => {
   submitButton.textContent = "예약 추가";
   cancelEditButton.hidden = true;
 });
-
-
 
 allButton.addEventListener("click", () => {
   choice = "all";
