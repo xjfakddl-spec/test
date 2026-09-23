@@ -30,6 +30,7 @@ const roomInput = document.querySelector("#room-input");
 const priceInput = document.querySelector("#price-input");
 const submitButton = form.querySelector('button[type="submit"]');
 const cancelEditButton = document.querySelector("#cancel-edit-btn");
+const errorMessage = document.querySelector("#form-error");
 
 // 3. 상태
 
@@ -113,8 +114,8 @@ form.addEventListener("submit", (event) => {
   const room = roomInput.value.trim();
   const price = Number(priceInput.value);
 
-  if (name === "" || room === "" || price <= 0) {
-    alert("모든 값을 입력해주세요.");
+  if (name === "" || room === "" || price <= 0 || !Number.isFinite(price)) {
+    errorMessage.textContent = "모든 값을 입력해주세요.";
     return;
   }
   if (editingId !== null) {
@@ -144,6 +145,7 @@ form.addEventListener("submit", (event) => {
   saveReservations();
   renderReservations();
   cancelEditButton.hidden = true;
+  errorMessage.textContent = "";
   form.reset();
 });
 
@@ -152,6 +154,7 @@ cancelEditButton.addEventListener("click", () => {
   form.reset();
   submitButton.textContent = "예약 추가";
   cancelEditButton.hidden = true;
+  errorMessage.textContent = "";
 });
 
 allButton.addEventListener("click", () => {
