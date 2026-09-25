@@ -198,7 +198,7 @@ cancelEditButton.hidden = true;
 
 async function getUser() {
   try {
-    const response = await fetch("https://jsonplaceholder.typicode.com/users/999999");
+    const response = await fetch("https://jsonplaceholder.typicode.com/users");
 
     if (!response.ok) {
       throw new Error("요청 실패");
