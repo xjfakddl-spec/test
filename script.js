@@ -197,10 +197,18 @@ renderReservations();
 cancelEditButton.hidden = true;
 
 async function getUser() {
-  const response = await fetch("https://jsonplaceholder.typicode.com/users/1");
-  const data = await response.json();
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/users/2");
 
-  console.log(data);
+    if (!response.ok) {
+      throw new Error("요청 실패");
+    }
+
+    const data = await response.json();
+    console.log(data.name);
+  } catch (error) {
+    console.log(error.message);
+  }
 }
 
 getUser();
