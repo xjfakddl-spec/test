@@ -4,40 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="test.css" />
-    <title>예약 관리</title>
+    <title>CineMatch</title>
   </head>
 
   <body>
-    <h1>예약 관리</h1>
-
-    <button id="load-users-btn">고객 불러오기</button>
-    <div id="user-list"></div>
-
-    <form id="reservation-form">
-      <input id="name-input" type="text" placeholder="예약자 이름" />
-      <input id="room-input" type="text" placeholder="객실 타입" />
-      <input id="price-input" type="number" placeholder="가격" />
-
-      <button type="submit">예약 추가</button>
-      <button type="button" id="cancel-edit-btn">수정 취소</button>
-      <p id="form-error"></p>
-    </form>
-
-    <input id="search-input" type="text" placeholder="예약자 이름 검색" />
-
-    <div>
-      <button id="all-btn">전체</button>
-      <button id="confirmed-btn">확정</button>
-      <button id="cancelled-btn">취소</button>
-    </div>
-
-    <div>
-      <button id="price-asc">가격 낮은순</button>
-      <button id="price-desc">가격 높은순</button>
-    </div>
-
-    <div id="reservation-list"></div>
-
-    <script src="script.js"></script>
+    <h1>오늘 뭐 볼까</h1>
+    <section id="m-card">
+      <div id="m-poster"></div>
+      <div id="m-title"></div>
+      <div id="m-rating"></div>
+      <button id=pass-btn>Pass</button>
+      <button id=like-btn>Like</button>
+    </section>
+    <section id="my-list">
+    </section>
   </body>
 </html>
