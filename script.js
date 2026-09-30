@@ -63,8 +63,8 @@ passBtn.addEventListener("click", () => {
 });
 
 likeBtn.addEventListener("click", () => {
-  myList = movieList[currentIndex];
-  myListLength = myList.length;
+  myList.push(movieList[currentIndex]);
+  myListLength.textContent(myList.length);
 };
 
 // 6. 최초 실행
