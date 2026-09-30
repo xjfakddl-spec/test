@@ -61,7 +61,6 @@ const nextMovie = () => {currentIndex += 1;
 // 5. 이벤트
 
 passBtn.addEventListener("click", () => {
-  currentIndex += 1;
   nextMovie()
 });
 
