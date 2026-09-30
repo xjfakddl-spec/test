@@ -1,4 +1,18 @@
 // 1. 데이터
+let movieList = []
+
+// 2. DOM 가져오기
+
+const mTitle = document.querySelector("#m-title");
+const mRating = document.querySelector("#m-rating")
+const mPoster = document.querySelector("#m-poster")
+const passBtn = document.querySelector("#pass-btn")
+
+// 3. 상태
+
+let currentIndex = 0;
+
+// 4. 함수
 const getMovie = async () => {
   try {
     const response = await fetch("https://ghibliapi.dev/films");
@@ -16,25 +30,21 @@ const getMovie = async () => {
     }
 };
 
-// 2. DOM 가져오기
+const loadMovies = async () => {
+  movieList = await getMovie();
+};
 
-const mTitle = document.querySelector("#m-title");
-const mRating = document.querySelector("#m-rating")
-const mPoster = document.querySelector("#m-poster")
-const passBtn = document.querySelector("#pass-btn")
+const renderMovie = () => {
+  const movie = movieList[currentIndex];
 
-// 3. 상태
+  mTitle.textContent = movie.title;
+  mRating.textContent = movie.rt_score;
+  mPoster.src = movie.image;
+};
 
-let currentIndex = 0;
-
-// 4. 함수
-
-const renderMovie = async () => {
-  const movies = await getMovie();
-  const nthMovie = movies[currentIndex];
-  mTitle.textContent = nthMovie.title;
-  mRating.textContent = nthMovie.rt_score;
-  mPoster.src = nthMovie.image;
+const init = async () => {
+  await loadMovies();
+  renderMovie();
 };
 
 // 5. 이벤트
@@ -42,7 +52,8 @@ const renderMovie = async () => {
 passBtn.addEventListener("click", () => {
   currentIndex += 1;
   renderMovie();
-};
+});
 
 // 6. 최초 실행
-renderMovie()
+
+init();
