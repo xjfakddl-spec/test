@@ -9,6 +9,7 @@ const mPoster = document.querySelector("#m-poster")
 const passBtn = document.querySelector("#pass-btn")
 const likeBtn = document.querySelector("#like-btn")
 const myListLength = document.querySelector("#my-list-length")
+const myListTitle = document.querySelector("#my-list-title")
 
 // 3. 상태
 let movieList = [];
@@ -43,6 +44,12 @@ const renderMovie = () => {
   mTitle.textContent = movie.title;
   mRating.textContent = movie.rt_score;
   mPoster.src = movie.image;
+
+  const myListTitles = mylist
+    .map((list) => list.title)
+    .join
+
+  myListTitle.innerHTML = mylistTitles
 };
 
 const init = async () => {
@@ -57,6 +64,7 @@ const nextMovie = () => {currentIndex += 1;
 
   renderMovie();
 };
+
   
 // 5. 이벤트
 
