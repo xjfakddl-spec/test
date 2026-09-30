@@ -20,18 +20,21 @@ getMovie();
 
 // 2. DOM 가져오기
 
-const m-title = querySelector("#m-title");
+const mTitle = document.querySelector("#m-title");
 
 // 3. 상태
 
 // 4. 함수
 
-const titles = () => {
-  getMovie[0]
-    .map((movie)=> movie.title)
-    .join
+const titles = async () => {
+  const movies = await getMovie();
+  const title = movies[0].title;
+  mTitle.textContent = title;
+};
   
 
 // 5. 이벤트
 
 // 6. 최초 실행
+
+titles();
