@@ -46,10 +46,10 @@ const renderMovie = () => {
   mPoster.src = movie.image;
 
   const myListTitles = myList
-    .map((list) => `<p>${list.title}<p>`)
+    .map((list) => `<p>${list.title}</p>`)
     .join("")
 
-  myListTitle.innerHTML = mylistTitles
+  myListTitle.innerHTML = myListTitles
 };
 
 const init = async () => {
