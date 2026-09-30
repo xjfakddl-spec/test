@@ -39,9 +39,9 @@ const renderMovie = async () => {
 
 // 5. 이벤트
 
-passBtn.addEventListner(click, () => {
-  currentIndex + 1
-  renderMovie()
+passBtn.addEventListener("click", () => {
+  currentIndex += 1;
+  renderMovie();
 };
 
 // 6. 최초 실행
