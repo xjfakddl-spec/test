@@ -27,19 +27,15 @@ const mRating = document.querySelector("#m-rating")
 
 // 4. 함수
 
-const titles = async () => {
+const renderMovie = async () => {
   const movies = await getMovie();
-  const title = movies[0].title;
-  mTitle.textContent = title;
+  const nthMovie = movies[0]
+  mTitle.textContent = nthMovie.title;
+  mRating.textContent = nthMovie.rt_score
 };
-  
-const ratings = async () => {
-  const movies = await getMovie();
-  const rating = movies[0].rt_score;
-  mRating.textContent = rating;
+
 };
 // 5. 이벤트
 
 // 6. 최초 실행
-
-titles();
+renderMovie()
