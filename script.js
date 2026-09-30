@@ -69,7 +69,7 @@ likeBtn.addEventListener("click", () => {
   myListLength.textContent = myList.length;
 
   nextMovie()
-};
+});
 
 // 6. 최초 실행
 
