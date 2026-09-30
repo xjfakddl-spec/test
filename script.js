@@ -49,30 +49,27 @@ const init = async () => {
   await loadMovies();
   renderMovie();
 };
-
-// 5. 이벤트
-
-passBtn.addEventListener("click", () => {
-  currentIndex += 1;
+const nextMovie = () => {currentIndex += 1;
 
   if (currentIndex >= movieList.length) {
     currentIndex = 0;
   }
 
   renderMovie();
+};
+  
+// 5. 이벤트
+
+passBtn.addEventListener("click", () => {
+  currentIndex += 1;
+  nextMovie()
 });
 
 likeBtn.addEventListener("click", () => {
   myList.push(movieList[currentIndex]);
   myListLength.textContent = myList.length;
 
-  currentIndex += 1;
-
-  if (currentIndex >= movieList.length) {
-    currentIndex = 0;
-  }
-
-  renderMovie();
+  nextMovie()
 };
 
 // 6. 최초 실행
