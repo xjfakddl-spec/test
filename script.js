@@ -79,6 +79,14 @@ likeBtn.addEventListener("click", () => {
   nextMovie()
 });
 
+myListTitle.addEventListener("click", (event) => {
+  if (event.target.classList.contains("remove-btn")) {
+    const id = Number(event.target.dataset.id);
+    const index = myList.findIndex((movie) => movie.id === id);
+
+    myList.splice(index, 1);
+}
+});
 // 6. 최초 실행
 
 init();
