@@ -14,7 +14,6 @@ const myListLength = document.querySelector("#my-list-length")
 let movieList = [];
 let currentIndex = 0;
 let myList = [];
-let myLL = 0;
 
 // 4. 함수
 const getMovie = async () => {
@@ -62,6 +61,11 @@ passBtn.addEventListener("click", () => {
 
   renderMovie();
 });
+
+likeBtn.addEventListener("click", () => {
+  myList = movieList[currentIndex];
+  myListLength = myList.length;
+};
 
 // 6. 최초 실행
 
