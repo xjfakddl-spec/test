@@ -46,7 +46,7 @@ const renderMovie = () => {
   mPoster.src = movie.image;
 
   const myListTitles = myList
-    .map((list) => `<p>${list.title}</p>`)
+    .map((list) => `<p>${list.title}</p><button class="remove-btn" data-id="${list.id}">삭제</button>`)
     .join("")
 
   myListTitle.innerHTML = myListTitles
