@@ -45,8 +45,8 @@ const renderMovie = () => {
   mRating.textContent = movie.rt_score;
   mPoster.src = movie.image;
 
-  const myListTitles = mylist
-    .map((list) => list.title)
+  const myListTitles = myList
+    .map((list) => `<p>${list.title}<p>`)
     .join("")
 
   myListTitle.innerHTML = mylistTitles
