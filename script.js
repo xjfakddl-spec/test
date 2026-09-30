@@ -21,20 +21,28 @@ const getMovie = async () => {
 const mTitle = document.querySelector("#m-title");
 const mRating = document.querySelector("#m-rating")
 const mPoster = document.querySelector("#m-poster")
+const passBtn = document.querySelector("#pass-btn")
 
 // 3. 상태
+
+let currentIndex = 0;
 
 // 4. 함수
 
 const renderMovie = async () => {
   const movies = await getMovie();
-  const nthMovie = movies[0];
+  const nthMovie = movies[currentIndex];
   mTitle.textContent = nthMovie.title;
   mRating.textContent = nthMovie.rt_score;
   mPoster.src = nthMovie.image;
 };
 
 // 5. 이벤트
+
+passBtn.addEventListner(click, () => {
+  currentIndex + 1
+  renderMovie()
+};
 
 // 6. 최초 실행
 renderMovie()
