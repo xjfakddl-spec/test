@@ -20,6 +20,7 @@ const getMovie = async () => {
 
 const mTitle = document.querySelector("#m-title");
 const mRating = document.querySelector("#m-rating")
+const mPoster = document.querySelector("#m-poster")
 
 // 3. 상태
 
@@ -30,6 +31,7 @@ const renderMovie = async () => {
   const nthMovie = movies[0];
   mTitle.textContent = nthMovie.title;
   mRating.textContent = nthMovie.rt_score;
+  mPoster.src = nthMovie.image;
 };
 
 // 5. 이벤트
