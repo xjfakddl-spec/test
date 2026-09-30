@@ -21,6 +21,7 @@ getMovie();
 // 2. DOM 가져오기
 
 const mTitle = document.querySelector("#m-title");
+const mRating = document.querySelector("#m-rating")
 
 // 3. 상태
 
@@ -32,7 +33,11 @@ const titles = async () => {
   mTitle.textContent = title;
 };
   
-
+const ratings = async () => {
+  const movies = await getMovie();
+  const rating = movies[0].rt_score;
+  mRating.textContent = rating;
+};
 // 5. 이벤트
 
 // 6. 최초 실행
