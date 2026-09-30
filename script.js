@@ -51,6 +51,11 @@ const init = async () => {
 
 passBtn.addEventListener("click", () => {
   currentIndex += 1;
+
+  if (currentIndex >= movieList.length) {
+    currentIndex = 0;
+  }
+
   renderMovie();
 });
 
