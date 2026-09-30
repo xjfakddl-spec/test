@@ -65,6 +65,14 @@ passBtn.addEventListener("click", () => {
 likeBtn.addEventListener("click", () => {
   myList.push(movieList[currentIndex]);
   myListLength.textContent = myList.length;
+
+  currentIndex += 1;
+
+  if (currentIndex >= movieList.length) {
+    currentIndex = 0;
+  }
+
+  renderMovie();
 };
 
 // 6. 최초 실행
