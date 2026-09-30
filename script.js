@@ -14,7 +14,7 @@ const myListLength = document.querySelector("#my-list-length")
 let movieList = [];
 let currentIndex = 0;
 let myList = [];
-let myListIndex = 0;
+let myLL = 0;
 
 // 4. 함수
 const getMovie = async () => {
