@@ -87,7 +87,7 @@ myListTitle.addEventListener("click", (event) => {
     myList.splice(index, 1);
     myListLength.textContent = myList.length;
 
-    renderMivie();
+    renderMovie();
 }
 });
 // 6. 최초 실행
