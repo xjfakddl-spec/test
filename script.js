@@ -1,5 +1,5 @@
 // 1. 데이터
-let movieList = []
+
 
 // 2. DOM 가져오기
 
@@ -7,10 +7,14 @@ const mTitle = document.querySelector("#m-title");
 const mRating = document.querySelector("#m-rating")
 const mPoster = document.querySelector("#m-poster")
 const passBtn = document.querySelector("#pass-btn")
+const likeBtn = document.querySelector("#like-btn")
+const myListLength = document.querySelector("#my-list-length")
 
 // 3. 상태
-
+let movieList = [];
 let currentIndex = 0;
+let myList = [];
+let myListIndex = 0;
 
 // 4. 함수
 const getMovie = async () => {
