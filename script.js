@@ -47,7 +47,7 @@ const renderMovie = () => {
 
   const myListTitles = mylist
     .map((list) => list.title)
-    .join
+    .join("")
 
   myListTitle.innerHTML = mylistTitles
 };
